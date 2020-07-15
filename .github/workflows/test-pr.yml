@@ -1,0 +1,48 @@
+name: Test Crystal/Shards
+
+on:
+  workflow_dispatch:
+    inputs:
+      crystal_repo:
+        default: 'crystal-lang/crystal'
+        required: true
+      crystal_branch:
+        default: 'master'
+        required: true
+      shards_repo:
+        default: 'crystal-lang/shards'
+        required: true
+      shards_branch:
+        default: 'master'
+        required: true
+
+jobs:
+  build:
+    container: crystallang/crystal:latest
+    steps:
+      - name: Checkout Crystal
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.inputs.crystal_repo }}
+          ref: ${{ github.event.inputs.crystal_branch }}
+          # https://github.com/actions/checkout#checkout-multiple-repos-private
+          token: ${{ secrets.MY_GITHUB_PAT }}
+          path: crystal
+      - name: Checkout Shards
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.inputs.shards_repo }}
+          ref: ${{ github.event.inputs.shards_branch }}
+          # https://github.com/actions/checkout#checkout-multiple-repos-private
+          token: ${{ secrets.MY_GITHUB_PAT }}
+          path: shards
+      - name: Build Crystal
+        run: |
+          cd crystal
+          make crystal
+          bin/crystal --version
+      - name: Build Shards
+        run: |
+          cd shards
+          make bin/shards
+          bin/shards --version
