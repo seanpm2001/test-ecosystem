@@ -64,7 +64,7 @@ gh_clone crystal-ameba/ameba master
 
 gh_clone kemalcr/kemal
 gh_clone luckyframework/lucky
-gh_clone luckyframework/lucky_cli
+gh_clone luckyframework/lucky_cli issues/642
 gh_clone luckyframework/avram
 gh_clone amberframework/amber
 gh_clone amberframework/granite
