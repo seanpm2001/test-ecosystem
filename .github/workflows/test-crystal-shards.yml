@@ -109,7 +109,7 @@ jobs:
           cd crystal
           make deps
       - name: Build Crystal
-        if: steps.build-cache.outputs.cache-hit != 'true'
+        # if: steps.build-cache.outputs.cache-hit != 'true'
         run: |
           mkdir crystal-lib
           cp $(/tmp/crystal/bin/crystal env CRYSTAL_LIBRARY_PATH)/* ./crystal-lib/
@@ -117,7 +117,7 @@ jobs:
           make crystal CRYSTAL_CONFIG_LIBRARY_PATH=$(readlink -f ../crystal-lib) ${{ github.event.inputs.crystal_build_opts }}
           bin/crystal --version
       - name: Build Shards
-        if: steps.build-cache.outputs.cache-hit != 'true'
+        # if: steps.build-cache.outputs.cache-hit != 'true'
         run: |
           cd shards
           make bin/shards CRYSTAL=../crystal/bin/crystal
