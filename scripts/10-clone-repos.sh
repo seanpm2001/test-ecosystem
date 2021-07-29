@@ -77,6 +77,8 @@ gh_clone "mint-lang/mint"
 
 gh_clone "iv-org/invidious"
 
+gh_clone crystal-community/crystal-patterns
+
 cat $REPOS_DIR/shard.override.yml
 
 # Copy samples directory to $REPOS_DIR/samples

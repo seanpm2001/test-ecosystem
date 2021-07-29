@@ -157,6 +157,7 @@ jobs:
           - 60-crystal-progress.bats
           - 70-implementations.bats
           - 80-apps-*.bats
+          - 90-examples.bats
       fail-fast: false
     name: test ${{ matrix.script }}
     runs-on: ubuntu-latest
