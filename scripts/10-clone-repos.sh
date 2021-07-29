@@ -69,6 +69,7 @@ gh_clone luckyframework/avram
 gh_clone amberframework/amber
 gh_clone amberframework/granite
 gh_clone TechMagister/liquid.cr
+gh_clone athena-framework/athena
 
 gh_clone "straight-shoota/crinja"
 gh_clone "mint-lang/mint"
