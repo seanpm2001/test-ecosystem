@@ -230,7 +230,7 @@ jobs:
         run: |
           which crystal
           crystal --version
-          crystal env
+          CRYSTAL_OPTS= crystal env
 
           which shards
           shards --version
