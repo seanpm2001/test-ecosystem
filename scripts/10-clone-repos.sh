@@ -68,7 +68,7 @@ gh_clone will/crystal-pg
 
 gh_clone manastech/webmock.cr
 
-gh_clone crystal-ameba/ameba master
+gh_clone crystal-ameba/ameba fix/crystal-nightly
 
 gh_clone kemalcr/kemal
 gh_clone luckyframework/lucky
