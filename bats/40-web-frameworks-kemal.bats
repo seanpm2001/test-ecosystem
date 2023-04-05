@@ -1,6 +1,9 @@
 #!/usr/bin/env bats
 
+echo "PATH=$PATH"
+
 @test "crystal env" {
+  echo "PATH=$PATH"
   crystal eval 'puts Process.run("env", output: :inherit, error: :inherit)'
   false
 }

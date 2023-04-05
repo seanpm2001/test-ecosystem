@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eu
 
+echo "PATH=$PATH"
 rm -rf $REPOS_DIR
 mkdir -p $REPOS_DIR
 
