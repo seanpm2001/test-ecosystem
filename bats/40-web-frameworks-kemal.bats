@@ -1,5 +1,24 @@
 #!/usr/bin/env bats
 
+@test "crystal env" {
+  crystal eval 'puts Process.run("env", output: :inherit, error: :inherit)'
+  false
+}
+@test "crystal env shell" {
+  crystal eval 'puts Process.run("env", shell: true, output: :inherit, error: :inherit)'
+  false
+}
+@test "crystal find_executable" {
+  crystal eval 'puts Process.find_executable("crystal")'
+  false
+}
+@test "run crystal shell" {
+  crystal eval 'puts Process.run("crystal", shell: true, output: :inherit, error: :inherit)'
+}
+@test "run crystal" {
+  crystal eval 'puts Process.run("crystal", output: :inherit, error: :inherit)'
+}
+
 @test "kemal specs" {
   pushd $REPOS_DIR/kemalcr/kemal
   shards

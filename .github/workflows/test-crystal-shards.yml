@@ -237,5 +237,6 @@ jobs:
 
           env | grep CRYSTAL
           env | grep SHARDS
+          echo "PATH=$PATH"
       - run: ./test-ecosystem/scripts/10-clone-repos.sh
       - run: bats ./test-ecosystem/bats/${{ matrix.script }}
