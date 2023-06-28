@@ -28,6 +28,9 @@ function git_checkout() {
 function shard_checkout() {
   git_checkout "$1"
 
+  # --skip-postinstall to prevent ameba building itself many times over
+  # --skip-executables is required with --skip-postinstall because postinstall
+  # executables are missing (https://github.com/crystal-lang/shards/issues/498).
   $SHARDS install --skip-postinstall --skip-executables
 }
 

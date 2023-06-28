@@ -19,7 +19,7 @@ function setup() {
 }
 
 @test "crystal manual specs" {
-  bin/crystal spec spec/manual/https_client_spec.cr
+  "bin/crystal${BAT}" spec spec/manual/https_client_spec.cr
 }
 
 # @test "crystal compiler" {

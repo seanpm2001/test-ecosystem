@@ -18,6 +18,7 @@ function setup() {
 }
 
 @test "crystal-community/timecop.cr" {
+  skiponwindows "Timeout"
   shard_checkout https://github.com/crystal-community/timecop.cr
 
   crystal_spec

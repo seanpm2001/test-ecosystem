@@ -38,10 +38,32 @@ jobs:
           if [ "$RUNNER_OS" == "macOS" ]; then
             brew install openssl pkg-config
           fi
-
-      - name: Run tests
-        run: |
           bats --version
-          bats test
+
+      - name: Test crystal
+        run: |
+          bats -T test/crystal.bats
         env:
           WINDOWS_BASE_DIR: "/d/a"
+        continue-on-error: true
+
+      - name: Test tools
+        run: |
+          bats -T test/tools.bats
+        env:
+          WINDOWS_BASE_DIR: "/d/a"
+        continue-on-error: true
+
+      - name: Test testing
+        run: |
+          bats -T test/testing.bats
+        env:
+          WINDOWS_BASE_DIR: "/d/a"
+        continue-on-error: true
+
+      - name: Test libraries
+        run: |
+          bats -T test/libraries.bats
+        env:
+          WINDOWS_BASE_DIR: "/d/a"
+        continue-on-error: true

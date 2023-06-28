@@ -5,9 +5,12 @@ skiponwindows() { :; }
 IS_WINDOWS=${IS_WINDOWS:-false}
 WINDOWS_BASE_DIR=${WINDOWS_BASE_DIR:-/mnt/c}
 
+EXE=""
+BAT=""
+
 if [ "$RUNNER_OS" == "Windows" ] || [ "$IS_WINDOWS" == true ]; then
   EXE=".exe"
-  export EXE
+  BAT=".bat"
 
   IS_WINDOWS=true
   if [ ! -d "$WINDOWS_BASE_DIR"/batstmp ]; then
@@ -28,3 +31,6 @@ if [ "$RUNNER_OS" == "Windows" ] || [ "$IS_WINDOWS" == true ]; then
     skip "$1 (Windows)"
   }
 fi
+
+export EXE
+export BAT
