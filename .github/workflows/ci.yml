@@ -20,6 +20,9 @@ jobs:
       fail-fast: false
       matrix:
           os: [ubuntu-22.04, windows-2022, macos-13]
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v3
 
@@ -30,9 +33,15 @@ jobs:
       - name: Setup BATS
         uses: mig4/setup-bats@v1
 
+      - name: Install dependencies
+        run: |
+          if [ "$RUNNER_OS" == "macOS" ]; then
+            brew install openssl pkg-config
+          fi
+
       - name: Run tests
         run: |
-          bash -c "bats --version"
-          bash -c "bats --tap test/libraries.bats"
+          bats --version
+          bats --tap test/libraries.bats
         env:
           WINDOWS_BASE_DIR: "/d/a"

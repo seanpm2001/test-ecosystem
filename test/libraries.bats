@@ -86,6 +86,7 @@ function setup() {
   $CRYSTAL spec
 }
 
+# bats test_tags=openssl
 @test "kemal-session" {
   shard_checkout https://github.com/kemalcr/kemal-session
 
