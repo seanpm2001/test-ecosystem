@@ -42,6 +42,6 @@ jobs:
       - name: Run tests
         run: |
           bats --version
-          bats -T test/libraries.bats
+          bats test
         env:
           WINDOWS_BASE_DIR: "/d/a"

@@ -17,7 +17,7 @@ function setup() {
 
 # bats test_tags=openssl
 @test "crystal-loot/exception_page" {
-  skip "Specs are broken (https://github.com/crystal-loot/exception_page/issues/39)"
+  skip "Specs are failing (https://github.com/crystal-loot/exception_page/issues/39)"
   skiponwindows "Does not build"
   shard_checkout https://github.com/crystal-loot/exception_page
 
@@ -93,6 +93,17 @@ function setup() {
   crystal_spec
 }
 
+# bats test_tags=openssl
+@test "kemalcr/kemal" {
+  if [[ "$(crystal env CRYSTAL_VERSION)" =~ ^0\.|^1\.[0-8]\. ]]; then
+    skiponwindows "Compiler bug in Crystal < 1.9"
+  fi
+
+  shard_checkout https://github.com/kemalcr/kemal
+
+  crystal_spec
+}
+
 @test "luckyframework/teeplate" {
   skip "Wants to sign git commit"
   skiponwindows "Does not build"
@@ -116,21 +127,21 @@ function setup() {
 
 @test "stumpycr/stumpy_png" {
   skip "Incompatible with modern Crystal"
-  skiponwindows "Specs are broken"
+  skiponwindows "Specs are failing"
   shard_checkout https://github.com/stumpycr/stumpy_png
 
   crystal_spec
 }
 
 @test "luckyframework/shell-table.cr" {
-  skip "Specs are broken"
+  skip "Specs are failing"
   shard_checkout https://github.com/luckyframework/shell-table.cr
 
   crystal_spec
 }
 
 @test "phoffer/inflector.cr" {
-  skip "Specs are broken"
+  skip "Specs are failing"
   shard_checkout https://github.com/phoffer/inflector.cr
 
   crystal_spec
@@ -138,7 +149,7 @@ function setup() {
 
 # bats test_tags=cmake
 @test "kostya/lexbor" {
-  skiponwindows "Specs are broken"
+  skiponwindows "Specs are failing"
   shard_checkout https://github.com/kostya/lexbor
 
   $CRYSTAL src/ext/build_ext.cr
@@ -146,7 +157,7 @@ function setup() {
 }
 
 @test "icyleaf/halite" {
-  skiponwindows "Specs are broken"
+  skiponwindows "Specs are failing"
   shard_checkout https://github.com/icyleaf/halite
 
   crystal_spec
@@ -175,7 +186,7 @@ function setup() {
 }
 
 @test "mamantoha/http_proxy" {
-  skiponwindows "Specs are broken"
+  skiponwindows "Specs are failing"
   shard_checkout https://github.com/mamantoha/http_proxy
 
   crystal_spec
@@ -188,7 +199,7 @@ function setup() {
 }
 
 @test "spider-gazelle/openssl_ext" {
-  skiponwindows "Specs are broken"
+  skiponwindows "Specs are failing"
   shard_checkout https://github.com/spider-gazelle/openssl_ext
 
   crystal_spec
@@ -201,8 +212,19 @@ function setup() {
 }
 
 @test "maiha/pretty.cr" {
-  skip "Specs are broken"
+  skip "Specs are failing"
   shard_checkout https://github.com/maiha/pretty.cr
 
   crystal_spec
+}
+
+@test "straight-shoota/crinja" {
+  skiponwindows "Specs are failing"
+
+  shard_checkout https://github.com/straight-shoota/crinja
+
+  crystal_spec
+
+  cd examples
+  bats integration_test.bats
 }

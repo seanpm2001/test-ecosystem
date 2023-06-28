@@ -1,0 +1,31 @@
+#!/usr/bin/env bats
+
+function setup() {
+  load helper/common
+}
+
+@test "ysbaddaden/minitest.cr" {
+  shard_checkout https://github.com/ysbaddaden/minitest.cr
+
+  crystal_spec
+}
+
+@test "arctic-fox/spectator" {
+  skip "Does not build"
+  shard_checkout https://gitlab.com/arctic-fox/spectator
+
+  crystal_spec
+}
+
+@test "crystal-community/timecop.cr" {
+  shard_checkout https://github.com/crystal-community/timecop.cr
+
+  crystal_spec
+}
+
+@test "manastech/webmock.cr" {
+  skiponwindows "Timeout"
+  shard_checkout https://github.com/manastech/webmock.cr
+
+  crystal_spec
+}
