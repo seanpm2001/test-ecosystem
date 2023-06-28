@@ -16,7 +16,7 @@ function git_checkout() {
 
   if [ -d "$TARGET" ]; then
     cd "$TARGET" || exit 1
-    git checkout origin/HEAD
+    git checkout --force origin/HEAD
     git pull origin HEAD
     git submodule update --init
   else
@@ -29,4 +29,8 @@ function shard_checkout() {
   git_checkout "$1"
 
   $SHARDS install --skip-postinstall --skip-executables
+}
+
+function crystal_spec() {
+  $CRYSTAL spec --junit_output ".junit/interpreter-std_spec.$BATS_TEST_NAME.xml"
 }

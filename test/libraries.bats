@@ -8,108 +8,201 @@ function setup() {
   load 'helper/common.bash'
 }
 
-@test "backtracer.cr" {
+@test "Sija/backtracer.cr" {
   skiponwindows "Specs are failing"
   shard_checkout https://github.com/Sija/backtracer.cr
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
 # bats test_tags=openssl
-@test "exception_page" {
+@test "crystal-loot/exception_page" {
   skip "Specs are broken (https://github.com/crystal-loot/exception_page/issues/39)"
   skiponwindows "Does not build"
   shard_checkout https://github.com/crystal-loot/exception_page
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "radix" {
+@test "luislavena/radix" {
   shard_checkout https://github.com/luislavena/radix
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "pool" {
+@test "ysbaddaden/pool" {
   shard_checkout https://github.com/ysbaddaden/pool
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "habitat" {
+@test "luckyframework/habitat" {
   shard_checkout https://github.com/luckyframework/habitat
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "wordsmith" {
+@test "luckyframework/wordsmith" {
   shard_checkout https://github.com/luckyframework/wordsmith
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "future.cr" {
+@test "crystal-community/future.cr" {
   shard_checkout https://github.com/crystal-community/future.cr
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "baked_file_system" {
+@test "schovi/baked_file_system" {
   skiponwindows "Does not build"
   shard_checkout https://github.com/schovi/baked_file_system
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "kilt" {
+@test "jeromegn/kilt" {
   skiponwindows "Does not build"
   shard_checkout https://github.com/jeromegn/kilt
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "stumpy_core" {
+@test "sumpycr/stumpy_core" {
   shard_checkout https://github.com/stumpycr/stumpy_core
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "lucky_task" {
+@test "luckyframework/lucky_task" {
   shard_checkout https://github.com/luckyframework/lucky_task
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "bindata" {
+@test "spider-gazelle/bindata" {
   shard_checkout https://github.com/spider-gazelle/bindata
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
 # bats test_tags=openssl
-@test "kemal-session" {
+@test "kemalcr/kemal-session" {
   shard_checkout https://github.com/kemalcr/kemal-session
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "teeplate" {
+@test "luckyframework/teeplate" {
   skip "Wants to sign git commit"
   skiponwindows "Does not build"
   shard_checkout https://github.com/luckyframework/teeplate
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "markd" {
+@test "icyleaf/markd" {
   shard_checkout https://github.com/icyleaf/markd
 
-  $CRYSTAL spec
+  crystal_spec
 }
 
-@test "json_mapping.cr" {
+@test "crystal-lang/json_mapping.cr" {
   skiponwindows "Does not build"
   shard_checkout https://github.com/crystal-lang/json_mapping.cr
 
-  $CRYSTAL spec
+  crystal_spec
+}
+
+@test "stumpycr/stumpy_png" {
+  skip "Incompatible with modern Crystal"
+  skiponwindows "Specs are broken"
+  shard_checkout https://github.com/stumpycr/stumpy_png
+
+  crystal_spec
+}
+
+@test "luckyframework/shell-table.cr" {
+  skip "Specs are broken"
+  shard_checkout https://github.com/luckyframework/shell-table.cr
+
+  crystal_spec
+}
+
+@test "phoffer/inflector.cr" {
+  skip "Specs are broken"
+  shard_checkout https://github.com/phoffer/inflector.cr
+
+  crystal_spec
+}
+
+# bats test_tags=cmake
+@test "kostya/lexbor" {
+  skiponwindows "Specs are broken"
+  shard_checkout https://github.com/kostya/lexbor
+
+  $CRYSTAL src/ext/build_ext.cr
+  crystal_spec
+}
+
+@test "icyleaf/halite" {
+  skiponwindows "Specs are broken"
+  shard_checkout https://github.com/icyleaf/halite
+
+  crystal_spec
+}
+
+@test "jwaldrip/admiral.cr" {
+  shard_checkout https://github.com/jwaldrip/admiral.cr
+
+  crystal_spec
+}
+
+@test "jeromegn/slang" {
+  if [[ "$(crystal env CRYSTAL_VERSION)" =~ ^0\.|^1\.[0-8]\. ]]; then
+    skiponwindows "Compiler bug in Crystal < 1.9"
+  fi
+
+  shard_checkout https://github.com/jeromegn/slang
+
+  crystal_spec
+}
+
+@test "vladfaust/time_format.cr" {
+  shard_checkout https://github.com/vladfaust/time_format.cr
+
+  crystal_spec
+}
+
+@test "mamantoha/http_proxy" {
+  skiponwindows "Specs are broken"
+  shard_checkout https://github.com/mamantoha/http_proxy
+
+  crystal_spec
+}
+
+@test "crystal-community/msgpack-crystal" {
+  shard_checkout https://github.com/crystal-community/msgpack-crystal
+
+  crystal_spec
+}
+
+@test "spider-gazelle/openssl_ext" {
+  skiponwindows "Specs are broken"
+  shard_checkout https://github.com/spider-gazelle/openssl_ext
+
+  crystal_spec
+}
+
+@test "gdotdesign/cr-dotenv" {
+  shard_checkout https://github.com/gdotdesign/cr-dotenv
+
+  crystal_spec
+}
+
+@test "maiha/pretty.cr" {
+  skip "Specs are broken"
+  shard_checkout https://github.com/maiha/pretty.cr
+
+  crystal_spec
 }
