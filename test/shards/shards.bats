@@ -1,13 +1,13 @@
 #!/usr/bin/env bats
 
 function setup_file() {
-  load helper/common
+  load ../helper/common
 
   shard_checkout https://github.com/crystal-lang/shards
 }
 
 function setup() {
-  load helper/common
+  load ../helper/common
 }
 
 @test "specs" {

@@ -68,9 +68,11 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v2
 
+      - name: Download source
+        uses: actions/checkout@v2
+
       - name: Install Mercurial
         run: .github/scripts/install-mercurial.bash
-        continue-on-error: true
 
       - name: Install Fossil
         run: bash .github/scripts/install-fossil.bash
@@ -85,11 +87,9 @@ jobs:
         with:
           bats-version: 1.9.0
 
-      - name: Download source
-        uses: actions/checkout@v2
-
       - name: Test
         run: |
-          bats -T --pretty test/shards
+          bats --pretty --timing test/shards
         env:
           WINDOWS_BASE_DIR: "/d/a"
+          TERM: dumb
