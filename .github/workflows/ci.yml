@@ -32,6 +32,8 @@ jobs:
 
       - name: Setup BATS
         uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.9.0
 
       - name: Install dependencies
         run: |
@@ -41,6 +43,7 @@ jobs:
 
       - name: Test
         run: |
-          bats -T --pretty test
+          bats --pretty --timing test
         env:
           WINDOWS_BASE_DIR: "/d/a"
+          TERM: dumb
