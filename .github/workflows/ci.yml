@@ -38,7 +38,10 @@ jobs:
       - name: Install dependencies
         run: |
           if [ "$RUNNER_OS" == "macOS" ]; then
+            which pkg-config || true
+            pkg-config --libs ssl || true
             brew install pkg-config
+            pkg-config --libs ssl
           fi
 
       - name: Test
