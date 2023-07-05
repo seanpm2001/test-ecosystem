@@ -29,9 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: crystal-lang/install-crystal@v1
+      - uses: crystal-lang/install-crystal@849504d5420feaf4e9cf672e55491a22aa07a911
         with:
-          crystal: ${{ github.event.inputs.crystal || 'nightly' }}
+          crystal: ${{ github.event.inputs.crystal || 'branch:ci/test-maintenance-build' }}
           shards: ${{ github.event.inputs.shards || 'nightly' }}
 
       - name: Setup BATS
